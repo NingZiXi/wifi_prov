@@ -15,7 +15,7 @@
 
 ## 使用方法
 
-使用 `wifi_prov` 组件的方法非常简单。你只需要在你的主程序中包含 `wifi_prov.h` 头文件，并调用 `wifi_prov_init()` 函数来初始化 WiFi 配网组件。以下是详细的使用步骤：
+使用 `wifi_prov` 组件的方法非常简单。你只需要在你的主程序中包含 `wifi_prov.h` 头文件，并调用 `wifi_prov_init()` 函数来初始化 WiFi 配网组件。
 
 ## 示例代码
 
