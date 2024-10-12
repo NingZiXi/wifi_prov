@@ -1,0 +1,11 @@
+version: 1.0.0
+license: "MIT"
+description: WiFi Provisioning Component
+url: https://github.com/1589326497/wifi_prov
+files:
+  - include/
+  - CMakeLists.txt
+  - component.mk
+dependencies:
+  idf:
+    version: ">=5.3.1"

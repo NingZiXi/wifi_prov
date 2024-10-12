@@ -4,6 +4,9 @@
 
 `wifi_prov` 组件是一个用于通过手机蓝牙对 ESP32 进行 WiFi 配网的组件。该组件使用 ESP-IDF 提供的 WiFi 配网管理器 (`wifi_provisioning`) 和蓝牙 (`BLE`) 方案，使得用户可以通过手机应用程序轻松配置 ESP32 的 WiFi 连接。
 
+## 许可证
+本组件使用 MIT 许可证。详细信息请查看 [LICENSE](LICENSE) 文件。
+
 ## 功能
 
 - 通过蓝牙进行 WiFi 配网。
