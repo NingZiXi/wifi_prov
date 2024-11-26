@@ -4,6 +4,9 @@
 
 `wifi_prov` 组件是一个用于通过手机蓝牙对 ESP32 进行 WiFi 配网的组件。该组件使用 ESP-IDF 提供的 WiFi 配网管理器 (`wifi_provisioning`) 和蓝牙 (`BLE`) 方案，使得用户可以通过手机应用程序轻松配置 ESP32 的 WiFi 连接。
 
+[官方文档](https://docs.espressif.com/projects/esp-idf/zh_CN/v5.3.1/esp32c3/api-reference/provisioning/provisioning.html#id2)
+
+[配网程序下载](https://play.google.com/store/apps/details?id=com.espressif.provble)
 ## 许可证
 本组件使用 MIT 许可证。详细信息请查看 [LICENSE](LICENSE) 文件。
 
@@ -27,16 +30,16 @@
 #include "wifi_prov.h"
 
 void app_main(void) {
-    wifi_prov_init();
+    wifi_prov_start("ESP32");
 }
 ```
 
 
 ## 更新日志
 - **作者**: [宁子希](https://github.com/1589326497)
-- **版本**: v1.0.1
-- **更新日期**: 2024-10-11
-- **更新内容**: 初始版本发布，包含基本的 WiFi 配网功能。
+- **版本**: v1.1.0
+- **更新日期**: 2024-11-26
+- **更新内容**: 修改了WiFi配网组件的启动函数，可以动态修改配网蓝牙名称
 
 
 ## 依赖

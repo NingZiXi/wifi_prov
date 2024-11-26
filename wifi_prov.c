@@ -2,7 +2,7 @@
  * @file wifi_prov.c
  * @author 宁子希
  * @brief 手机蓝牙对esp32配网
- * @version 0.1
+ * @version 1.1.0
  * @date 2024-11-26
  * 
  * @copyright Copyright (c) 2024

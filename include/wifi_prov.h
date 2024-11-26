@@ -1,3 +1,13 @@
+/**
+ * @file wifi_prov.h
+ * @author 宁子希 (1589326497@qq.com)
+ * @brief 手机蓝牙对esp32配网
+ * @version 1.1.0
+ * @date 2024-11-26
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #ifndef WIFI_PROV_H
 #define WIFI_PROV_H
 
@@ -17,9 +27,18 @@
 extern "C" {
 #endif
 
-// 初始化 WiFi 配网组件并运行
-void wifi_prov_init(void);
-// 检查当前 WiFi 连接状态
+/**
+ * @brief 开始 WiFi 配网
+ * 
+ * @param ble_name    蓝牙名称
+ */
+void wifi_prov_start(const char* ble_name);
+
+/**
+ * @brief 检查 WiFi 连接状态
+ * 
+ * @return esp_err_t 
+ */
 esp_err_t wifi_prov_check_connection(void);
 
 #ifdef __cplusplus
