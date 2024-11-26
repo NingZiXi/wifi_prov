@@ -3,7 +3,7 @@
  * @author 宁子希
  * @brief 手机蓝牙对esp32配网
  * @version 0.1
- * @date 2024-10-11
+ * @date 2024-11-26
  * 
  * @copyright Copyright (c) 2024
  * 
@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 static const char *TAG = "WIFI_PROV";
-
+static char prov_name[50];  // 配网名称
 
 // WiFi 事件回调函数
 void wifi_event_callback(void* event_handler_arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
@@ -66,14 +66,16 @@ esp_err_t wifi_prov_check_connection(void) {
 }
 
 // 初始化 WiFi 配网组件
-void wifi_prov_init(void) {
+void wifi_prov_start(const char* ble_name) {
+
+    sprintf(prov_name, "%s%s", "PROV_", ble_name);
     nvs_flash_init();
     esp_netif_init();   // 初始化 lwIP 框架
     esp_event_loop_create_default();  // 创建事件循环
     esp_netif_create_default_wifi_sta();    // 创建默认的 WiFi station
     wifi_init_config_t wifi_init_config = WIFI_INIT_CONFIG_DEFAULT();
     esp_wifi_init(&wifi_init_config);    // 初始化 WiFi
-
+    
     bool provisioned = false; // 判断是否已经配网
     ESP_ERROR_CHECK(wifi_prov_mgr_is_provisioned(&provisioned));
 
@@ -92,7 +94,7 @@ void wifi_prov_init(void) {
     int retry_count = 0; // 连接重试计数
 
     if (!provisioned) {
-        wifi_prov_mgr_start_provisioning(WIFI_PROV_SECURITY_0, NULL, "PROV_小巫", NULL);
+        wifi_prov_mgr_start_provisioning(WIFI_PROV_SECURITY_0, NULL, prov_name, NULL);
     } else {
         ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
         ESP_ERROR_CHECK(esp_wifi_start());
@@ -119,7 +121,7 @@ void wifi_prov_init(void) {
             retry_count = 0; // 重置计数器
 
             // 再次开启连接
-            wifi_prov_mgr_start_provisioning(WIFI_PROV_SECURITY_0, NULL, "PROV_小巫", NULL);
+            wifi_prov_mgr_start_provisioning(WIFI_PROV_SECURITY_0, NULL, prov_name, NULL);
         }
     }
 }
