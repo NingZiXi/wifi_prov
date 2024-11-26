@@ -20,6 +20,8 @@
 
 使用 `wifi_prov` 组件的方法非常简单。你只需要在你的主程序中包含 `wifi_prov.h` 头文件，并调用 `wifi_prov_init()` 函数来初始化 WiFi 配网组件。
 
+需要注意，要在menuconfig里打开Bluetooth的配置，否则无法使用蓝牙配网功能。
+
 ## 示例代码
 
 以下是一个完整的示例代码，展示如何使用 `wifi_prov` 组件：
